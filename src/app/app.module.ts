@@ -9,10 +9,10 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
+import { DashboardComponent }   from './landing/dashboard.component';
+import { HeroDetailComponent }  from './content-detail/hero-detail.component';
+import { HeroesComponent }      from './content/heroes.component';
+import { HeroSearchComponent }  from './content-search/hero-search.component';
 import { HeroService }          from './hero.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';

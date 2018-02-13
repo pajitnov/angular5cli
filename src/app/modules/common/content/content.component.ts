@@ -14,10 +14,10 @@ export class ContentComponent implements OnInit {
   constructor(private heroService: ContentService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getContent();
   }
 
-  getHeroes(): void {
+  getContent(): void {
     this.heroService.getAllContent()
     .subscribe(heroes => this.heroes = heroes);
   }

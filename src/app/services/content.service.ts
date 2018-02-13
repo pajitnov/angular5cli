@@ -60,7 +60,7 @@ export class ContentService {
       return of([]);
     }
     return this.http.get<Content[]>(`api/heroes/?name=${term}`).pipe(
-      tap(_ => this.log(`found heroes matching "${term}"`)),
+      tap(_ => this.log(`found movies matching "${term}"`)),
       catchError(this.handleError<Content[]>('searchHeroes', []))
     );
   }
@@ -70,7 +70,7 @@ export class ContentService {
   /** POST: add a new movie to the server */
   addContent (hero: Content): Observable<Content> {
     return this.http.post<Content>(this.contentUrl, hero, httpOptions).pipe(
-      tap((hero: Content) => this.log(`added hero w/ id=${hero.id}`)),
+      tap((hero: Content) => this.log(`added movie w/ id=${hero.id}`)),
       catchError(this.handleError<Content>('addContent'))
     );
   }
@@ -81,7 +81,7 @@ export class ContentService {
     const url = `${this.contentUrl}/${id}`;
 
     return this.http.delete<Content>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(_ => this.log(`deleted movie id=${id}`)),
       catchError(this.handleError<Content>('deleteContent'))
     );
   }
@@ -89,7 +89,7 @@ export class ContentService {
   /** PUT: update the movie on the server */
   updateContent (hero: Content): Observable<any> {
     return this.http.put(this.contentUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      tap(_ => this.log(`updated movie id=${hero.id}`)),
       catchError(this.handleError<any>('updateContent'))
     );
   }

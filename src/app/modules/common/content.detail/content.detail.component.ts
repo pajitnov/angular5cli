@@ -25,7 +25,7 @@ export class ContentDetail implements OnInit {
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
+    this.heroService.getContent(id)
       .subscribe(hero => this.hero = hero);
   }
 
@@ -34,7 +34,7 @@ export class ContentDetail implements OnInit {
   }
 
  save(): void {
-    this.heroService.updateHero(this.hero)
+    this.heroService.updateContent(this.hero)
       .subscribe(() => this.goBack());
   }
 }

@@ -8,7 +8,7 @@ import { ContentService } from '../../../services/content.service';
   templateUrl: './views/content.component.html',
   styleUrls: ['./views/content.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class ContentComponent implements OnInit {
   heroes: Content[];
 
   constructor(private heroService: ContentService) { }
@@ -18,14 +18,14 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
+    this.heroService.getAllContent()
     .subscribe(heroes => this.heroes = heroes);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.addHero({ name } as Content)
+    this.heroService.addContent({ name } as Content)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
@@ -33,7 +33,7 @@ export class HeroesComponent implements OnInit {
 
   delete(hero: Content): void {
     this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero).subscribe();
+    this.heroService.deleteContent(hero).subscribe();
   }
 
 }

@@ -6,7 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Content } from '../modules/common/content/content';
-import { MessageService } from './com.service';
+import { ComService } from './com.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,24 +15,24 @@ const httpOptions = {
 @Injectable()
 export class ContentService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private contentUrl = 'api/heroes';  // URL to web api
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: ComService) { }
 
-  /** GET heroes from the server */
-  getHeroes (): Observable<Content[]> {
-    return this.http.get<Content[]>(this.heroesUrl)
+  /** GET movies from the server */
+  getAllContent (): Observable<Content[]> {
+    return this.http.get<Content[]>(this.contentUrl)
       .pipe(
-        tap(heroes => this.log(`fetched heroes`)),
-        catchError(this.handleError('getHeroes', []))
+        tap(heroes => this.log(`fetched movies`)),
+        catchError(this.handleError('getAllContent', []))
       );
   }
 
-  /** GET hero by id. Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<Content> {
-    const url = `${this.heroesUrl}/?id=${id}`;
+  /** GET movie by id. Return `undefined` when id not found */
+  getContentNo404<Data>(id: number): Observable<Content> {
+    const url = `${this.contentUrl}/?id=${id}`;
     return this.http.get<Content[]>(url)
       .pipe(
         map(heroes => heroes[0]), // returns a {0|1} element array
@@ -44,9 +44,9 @@ export class ContentService {
       );
   }
 
-  /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Content> {
-    const url = `${this.heroesUrl}/${id}`;
+  /** GET movie by id. Will 404 if id not found */
+  getContent(id: number): Observable<Content> {
+    const url = `${this.contentUrl}/${id}`;
     return this.http.get<Content>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Content>(`getHero id=${id}`))
@@ -67,30 +67,30 @@ export class ContentService {
 
   //////// Save methods //////////
 
-  /** POST: add a new hero to the server */
-  addHero (hero: Content): Observable<Content> {
-    return this.http.post<Content>(this.heroesUrl, hero, httpOptions).pipe(
+  /** POST: add a new movie to the server */
+  addContent (hero: Content): Observable<Content> {
+    return this.http.post<Content>(this.contentUrl, hero, httpOptions).pipe(
       tap((hero: Content) => this.log(`added hero w/ id=${hero.id}`)),
-      catchError(this.handleError<Content>('addHero'))
+      catchError(this.handleError<Content>('addContent'))
     );
   }
 
-  /** DELETE: delete the hero from the server */
-  deleteHero (hero: Content | number): Observable<Content> {
+  /** DELETE: delete the movie from the server */
+  deleteContent (hero: Content | number): Observable<Content> {
     const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.contentUrl}/${id}`;
 
     return this.http.delete<Content>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Content>('deleteHero'))
+      catchError(this.handleError<Content>('deleteContent'))
     );
   }
 
-  /** PUT: update the hero on the server */
-  updateHero (hero: Content): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+  /** PUT: update the movie on the server */
+  updateContent (hero: Content): Observable<any> {
+    return this.http.put(this.contentUrl, hero, httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateContent'))
     );
   }
 
@@ -114,7 +114,7 @@ export class ContentService {
     };
   }
 
-  /** Log a ContentService message with the MessageService */
+  /** Log a ContentService message with the ComService */
   private log(message: string) {
     this.messageService.add('ContentService: ' + message);
   }

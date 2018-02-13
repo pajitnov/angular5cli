@@ -9,12 +9,12 @@ import { InMemoryDataService }  from './req/in-memory-data.service';
 import { AppRoutingModule }     from './routes/routes.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './modules/landing/landing.component';
+import { LandingComponent }   from './modules/landing/landing.component';
 import { ContentDetail }  from './modules/common/content.detail/content.detail.component';
-import { HeroesComponent }      from './modules/common/content/content.component';
-import { HeroSearchComponent }  from './modules/common/content.search/content.search.component';
+import { ContentComponent }      from './modules/common/content/content.component';
+import { ContentSearchComponent }  from './modules/common/content.search/content.search.component';
 import { ContentService }          from './services/content.service';
-import { MessageService }       from './services/com.service';
+import { ComService }       from './services/com.service';
 import { MessagesComponent }    from './modules/com/com.component';
 import { UserComponent } from './modules/user/user.component';
 import { ConfigComponent } from './config/config.component';
@@ -36,16 +36,16 @@ import { AnalyticsComponent } from './modules/analytics/analytics.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HeroesComponent,
+    LandingComponent,
+    ContentComponent,
     ContentDetail,
     MessagesComponent,
-    HeroSearchComponent,
+    ContentSearchComponent,
     UserComponent,
     ConfigComponent,
     AnalyticsComponent
   ],
-  providers: [ ContentService, MessageService ],
+  providers: [ ContentService, ComService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

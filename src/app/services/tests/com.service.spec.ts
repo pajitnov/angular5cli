@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MessageService } from '../com.service';
+import { ComService } from '../com.service';
 
-describe('MessageService', () => {
+describe('ComService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MessageService]
+      providers: [ComService]
     });
   });
 
-  it('should be created', inject([MessageService], (service: MessageService) => {
+  it('should be created', inject([ComService], (service: ComService) => {
     expect(service).toBeTruthy();
   }));
 });

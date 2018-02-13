@@ -15,7 +15,7 @@ import { ContentService } from '../../../services/content.service';
   templateUrl: './views/content.search.component.html',
   styleUrls: [ './views/content.search.component.css' ]
 })
-export class HeroSearchComponent implements OnInit {
+export class ContentSearchComponent implements OnInit {
   heroes$: Observable<Content[]>;
   private searchTerms = new Subject<string>();
 

@@ -7,7 +7,7 @@ import { ContentService } from '../../services/content.service';
   templateUrl: './views/landing.component.html',
   styleUrls: [ './views/landing.component.css' ]
 })
-export class DashboardComponent implements OnInit {
+export class LandingComponent implements OnInit {
   heroes: Content[] = [];
 
   constructor(private heroService: ContentService) { }
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
+    this.heroService.getAllContent()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 }

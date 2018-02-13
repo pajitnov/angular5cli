@@ -16,7 +16,7 @@ class Hero {
 
   // Factory methods
 
-  // Hero from string formatted as '<id> <name>'.
+  // Content from string formatted as '<id> <name>'.
   static fromString(s: string): Hero {
     return {
       id: +s.substr(0, s.indexOf(' ')),
@@ -24,14 +24,14 @@ class Hero {
     };
   }
 
-  // Hero from hero list <li> element.
+  // Content from hero list <li> element.
   static async fromLi(li: ElementFinder): Promise<Hero> {
       let stringsFromA = await li.all(by.css('a')).getText();
       let strings = stringsFromA[0].split(' ');
       return { id: +strings[0], name: strings[1] };
   }
 
-  // Hero id and name from the given detail element.
+  // Content id and name from the given detail element.
   static async fromDetail(detail: ElementFinder): Promise<Hero> {
     // Get hero id from the first <div>
     let _id = await detail.all(by.css('div')).first().getText();
@@ -167,7 +167,7 @@ describe('Tutorial part 6', () => {
       expect(page.appHeroes.isPresent()).toBeTruthy();
       expect(page.allHeroes.count()).toEqual(9, 'number of heroes');
       const heroesAfter = await toHeroArray(page.allHeroes);
-      // console.log(await Hero.fromLi(page.allHeroes[0]));
+      // console.log(await Content.fromLi(page.allHeroes[0]));
       const expectedHeroes =  heroesBefore.filter(h => h.name !== newHeroName);
       expect(heroesAfter).toEqual(expectedHeroes);
       // expect(page.selectedHeroSubview.isPresent()).toBeFalsy();

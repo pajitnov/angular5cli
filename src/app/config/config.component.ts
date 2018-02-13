@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.css']
+  templateUrl: './views/config.component.html',
+  styleUrls: ['./views/config.component.css']
 })
 export class ConfigComponent implements OnInit {
 

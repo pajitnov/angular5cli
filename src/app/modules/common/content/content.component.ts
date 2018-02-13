@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../content';
-import { HeroService } from '../content.service';
+import { Content } from './content';
+import { HeroService } from '../../../services/content.service';
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  templateUrl: './views/content.component.html',
+  styleUrls: ['./views/content.component.css']
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero[];
+  heroes: Content[];
 
   constructor(private heroService: HeroService) { }
 
@@ -25,13 +25,13 @@ export class HeroesComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.addHero({ name } as Hero)
+    this.heroService.addHero({ name } as Content)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
   }
 
-  delete(hero: Hero): void {
+  delete(hero: Content): void {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
   }

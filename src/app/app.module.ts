@@ -4,17 +4,17 @@ import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService }  from './req/in-memory-data.service';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { AppRoutingModule }     from './routes/routes.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './modules/landing/dashboard.component';
-import { HeroDetailComponent }  from './modules/content.detail/content.detail.component';
-import { HeroesComponent }      from './content/content.component';
-import { HeroSearchComponent }  from './modules/content.search/content.search.component';
-import { HeroService }          from './content.service';
-import { MessageService }       from './message.service';
+import { DashboardComponent }   from './modules/landing/landing.component';
+import { HeroDetailComponent }  from './modules/common/content.detail/content.detail.component';
+import { HeroesComponent }      from './modules/common/content/content.component';
+import { HeroSearchComponent }  from './modules/common/content.search/content.search.component';
+import { HeroService }          from './services/content.service';
+import { MessageService }       from './services/com.service';
 import { MessagesComponent }    from './modules/messages/messages.component';
 import { UserComponent } from './modules/user/user.component';
 import { ConfigComponent } from './config/config.component';

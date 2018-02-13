@@ -1,9 +1,9 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent }   from './modules/landing/dashboard.component';
-import { HeroesComponent }      from './content/content.component';
-import { HeroDetailComponent }  from './modules/content.detail/content.detail.component';
+import { DashboardComponent }   from '../modules/landing/landing.component';
+import { HeroesComponent }      from '../modules/common/content/content.component';
+import { HeroDetailComponent }  from '../modules/common/content.detail/content.detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/promo', pathMatch: 'full' },

@@ -2,16 +2,16 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero }         from '../../content';
-import { HeroService }  from '../../content.service';
+import { Content }         from '../content/content';
+import { HeroService }  from '../../../services/content.service';
 
 @Component({
   selector: 'app-hero-detail',
-  templateUrl: './content.detail.component.html',
-  styleUrls: [ './content.detail.component.css' ]
+  templateUrl: './views/content.detail.component.html',
+  styleUrls: [ './views/content.detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero;
+  @Input() hero: Content;
 
   constructor(
     private route: ActivatedRoute,

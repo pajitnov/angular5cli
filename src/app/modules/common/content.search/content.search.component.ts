@@ -8,16 +8,16 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Hero } from '../../content';
-import { HeroService } from '../../content.service';
+import { Content } from '../content/content';
+import { HeroService } from '../../../services/content.service';
 
 @Component({
   selector: 'app-hero-search',
-  templateUrl: './content.search.component.html',
-  styleUrls: [ './content.search.component.css' ]
+  templateUrl: './views/content.search.component.html',
+  styleUrls: [ './views/content.search.component.css' ]
 })
 export class HeroSearchComponent implements OnInit {
-  heroes$: Observable<Hero[]>;
+  heroes$: Observable<Content[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {}

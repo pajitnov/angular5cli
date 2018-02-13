@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class ContentService {
 
-  private contentUrl = 'api/heroes';  // URL to web api
+  private contentUrl = 'api/content';  // URL to web api
 
 //  private contentUrl = 'localhost:3030/movies';
 
@@ -50,7 +50,7 @@ export class ContentService {
     const url = `${this.contentUrl}/?id=${id}`;
     return this.http.get<Content[]>(url)
       .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
+        map(movies => movies[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
           this.log(`${outcome} movie id=${id}`);
@@ -66,7 +66,7 @@ export class ContentService {
       // if not search term, return empty movies array.
       return of([]);
     }
-    return this.http.get<Content[]>(`api/heroes/?name=${term}`).pipe(
+    return this.http.get<Content[]>(`api/content/?name=${term}`).pipe(
       tap(_ => this.log(`found movies matching "${term}"`)),
       catchError(this.handleError<Content[]>('searchContent', []))
     );
@@ -75,16 +75,16 @@ export class ContentService {
   //////// Save methods //////////
 
   /** POST: add a new movie to the server */
-  addContent (hero: Content): Observable<Content> {
-    return this.http.post<Content>(this.contentUrl, hero, httpOptions).pipe(
-      tap((hero: Content) => this.log(`added movie w/ id=${hero.id}`)),
+  addContent (movie: Content): Observable<Content> {
+    return this.http.post<Content>(this.contentUrl, movie, httpOptions).pipe(
+      tap((movie: Content) => this.log(`added movie w/ id=${movie.id}`)),
       catchError(this.handleError<Content>('addContent'))
     );
   }
 
   /** DELETE: delete the movie from the server */
-  deleteContent (hero: Content | number): Observable<Content> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+  deleteContent (movie: Content | number): Observable<Content> {
+    const id = typeof movie === 'number' ? movie : movie.id;
     const url = `${this.contentUrl}/${id}`;
 
     return this.http.delete<Content>(url, httpOptions).pipe(
@@ -94,9 +94,9 @@ export class ContentService {
   }
 
   /** PUT: update the movie on the server */
-  updateContent (hero: Content): Observable<any> {
-    return this.http.put(this.contentUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated movie id=${hero.id}`)),
+  updateContent (movie: Content): Observable<any> {
+    return this.http.put(this.contentUrl, movie, httpOptions).pipe(
+      tap(_ => this.log(`updated movie id=${movie.id}`)),
       catchError(this.handleError<any>('updateContent'))
     );
   }

@@ -2,7 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const heroes = [
+    const content = [
       { id: 11, name: 'Blade Runner 2049', year: '2017', genre: 'comedy', director: 'James Gunn' },
       { id: 13, name: 'Murder on the Orient Express', year: '2017', genre: 'comedy', director: 'James Gunn' },
       { id: 14, name: 'Wonder Wheel', year: '2017', genre: 'comedy', director: 'James Gunn' },
@@ -13,6 +13,6 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'The Shape of Water', year: '2017', genre: 'comedy', director: 'James Gunn' },
       { id: 20, name: 'John Wick: Chapter 2', year: '2017', genre: 'comedy', director: 'James Gunn' }
     ];
-    return {heroes};
+    return {content};
   }
 }

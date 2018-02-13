@@ -28,3 +28,8 @@ button:disabled {
   color: #ccc;
   cursor: auto;
 }
+.movie-promo{
+  border: 1px solid grey;
+  width: 75%;
+  height: 400px;
+}

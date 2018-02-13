@@ -4,7 +4,6 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
       { id: 11, name: 'Blade Runner 2049', year: '2017', genre: 'comedy', director: 'James Gunn' },
-      { id: 12, name: 'Lady Bird', year: '2017', genre: 'comedy', director: 'James Gunn' },
       { id: 13, name: 'Murder on the Orient Express', year: '2017', genre: 'comedy', director: 'James Gunn' },
       { id: 14, name: 'Wonder Wheel', year: '2017', genre: 'comedy', director: 'James Gunn' },
       { id: 15, name: 'Dunkirk', year: '2017', genre: 'comedy', director: 'James Gunn' },

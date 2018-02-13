@@ -24,7 +24,7 @@ class Hero {
     };
   }
 
-  // Content from hero list <li> element.
+  // Content from movies list <li> element.
   static async fromLi(li: ElementFinder): Promise<Hero> {
       let stringsFromA = await li.all(by.css('a')).getText();
       let strings = stringsFromA[0].split(' ');
@@ -33,7 +33,7 @@ class Hero {
 
   // Content id and name from the given detail element.
   static async fromDetail(detail: ElementFinder): Promise<Hero> {
-    // Get hero id from the first <div>
+    // Get movies id from the first <div>
     let _id = await detail.all(by.css('div')).first().getText();
     // Get name from the h2
     let _name = await detail.element(by.css('h2')).getText();
@@ -59,11 +59,11 @@ describe('Tutorial part 6', () => {
       topHeroes: element.all(by.css('app-root app-dashboard > div h4')),
 
       appHeroesHref: navElts.get(1),
-      appHeroes: element(by.css('app-root app-heroes')),
-      allHeroes: element.all(by.css('app-root app-heroes li')),
-      selectedHeroSubview: element(by.css('app-root app-heroes > div:last-child')),
+      appHeroes: element(by.css('app-root app-content')),
+      allHeroes: element.all(by.css('app-root app-content li')),
+      selectedHeroSubview: element(by.css('app-root app-content > div:last-child')),
 
-      heroDetail: element(by.css('app-root app-hero-detail > div')),
+      heroDetail: element(by.css('app-root app-movies-detail > div')),
 
       searchBox: element(by.css('#search-box')),
       searchResults: element.all(by.css('.search-result li'))
@@ -139,11 +139,11 @@ describe('Tutorial part 6', () => {
       expect(page.allHeroes.count()).toEqual(10, 'number of heroes');
     });
 
-    it('can route to hero details', async () => {
+    it('can route to movies details', async () => {
       getHeroLiEltById(targetHero.id).click();
 
       let page = getPageElts();
-      expect(page.heroDetail.isPresent()).toBeTruthy('shows hero detail');
+      expect(page.heroDetail.isPresent()).toBeTruthy('shows movies detail');
       let hero = await Hero.fromDetail(page.heroDetail);
       expect(hero.id).toEqual(targetHero.id);
       expect(hero.name).toEqual(targetHero.name.toUpperCase());
@@ -192,7 +192,7 @@ describe('Tutorial part 6', () => {
     });
   });
 
-  describe('Progressive hero search', () => {
+  describe('Progressive movies search', () => {
 
     beforeAll(() => browser.get(''));
 
@@ -224,7 +224,7 @@ describe('Tutorial part 6', () => {
       hero.click();
 
       let page = getPageElts();
-      expect(page.heroDetail.isPresent()).toBeTruthy('shows hero detail');
+      expect(page.heroDetail.isPresent()).toBeTruthy('shows movies detail');
       let hero2 = await Hero.fromDetail(page.heroDetail);
       expect(hero2.id).toEqual(targetHero.id);
       expect(hero2.name).toEqual(targetHero.name.toUpperCase());
@@ -238,14 +238,14 @@ describe('Tutorial part 6', () => {
     browser.waitForAngular(); // seems necessary to gets tests to pass for toh-pt6
 
     let page = getPageElts();
-    expect(page.heroDetail.isPresent()).toBeTruthy('shows hero detail');
+    expect(page.heroDetail.isPresent()).toBeTruthy('shows movies detail');
     let hero = await Hero.fromDetail(page.heroDetail);
     expect(hero.id).toEqual(targetHero.id);
     expect(hero.name).toEqual(targetHero.name.toUpperCase());
   }
 
   async function updateHeroNameInDetailView() {
-    // Assumes that the current view is the hero details view.
+    // Assumes that the current view is the movies details view.
     addToHeroName(nameSuffix);
 
     let page = getPageElts();

@@ -56,7 +56,7 @@ export class ContentService {
   /* GET heroes whose name contains search term */
   searchHeroes(term: string): Observable<Content[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty movies array.
       return of([]);
     }
     return this.http.get<Content[]>(`api/heroes/?name=${term}`).pipe(

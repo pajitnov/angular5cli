@@ -6,27 +6,27 @@ import { Content }         from '../content/content';
 import { ContentService }  from '../../../services/content.service';
 
 @Component({
-  selector: 'app-hero-detail',
+  selector: 'app-content-detail',
   templateUrl: './views/content.detail.component.html',
   styleUrls: [ './views/content.detail.component.css' ]
 })
 export class ContentDetail implements OnInit {
-  @Input() hero: Content;
+  @Input() movies: Content;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: ContentService,
+    private contentService: ContentService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.getMovies();
   }
 
-  getHero(): void {
+  getMovies(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getContent(id)
-      .subscribe(hero => this.hero = hero);
+    this.contentService.getContent(id)
+      .subscribe(contents => this.movies = contents);
   }
 
   goBack(): void {
@@ -34,7 +34,7 @@ export class ContentDetail implements OnInit {
   }
 
  save(): void {
-    this.heroService.updateContent(this.hero)
+    this.contentService.updateContent(this.movies)
       .subscribe(() => this.goBack());
   }
 }

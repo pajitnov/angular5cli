@@ -4,28 +4,28 @@ import { Content } from './content';
 import { ContentService } from '../../../services/content.service';
 
 @Component({
-  selector: 'app-heroes',
+  selector: 'app-content',
   templateUrl: './views/content.component.html',
   styleUrls: ['./views/content.component.css']
 })
 export class ContentComponent implements OnInit {
   heroes: Content[];
 
-  constructor(private heroService: ContentService) { }
+  constructor(private contentService: ContentService) { }
 
   ngOnInit() {
     this.getContent();
   }
 
   getContent(): void {
-    this.heroService.getAllContent()
+    this.contentService.getAllContent()
     .subscribe(heroes => this.heroes = heroes);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.addContent({ name } as Content)
+    this.contentService.addContent({ name } as Content)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
@@ -33,7 +33,7 @@ export class ContentComponent implements OnInit {
 
   delete(hero: Content): void {
     this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteContent(hero).subscribe();
+    this.contentService.deleteContent(hero).subscribe();
   }
 
 }

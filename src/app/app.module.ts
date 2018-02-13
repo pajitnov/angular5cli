@@ -17,6 +17,7 @@ import { MessagesComponent }    from './modules/com/com.component';
 import { UserComponent } from './modules/user/user.component';
 import { ConfigComponent } from './config/config.component';
 import { AnalyticsComponent } from './modules/analytics/analytics.component';
+import { PromoDirective } from './directives/promocontent/promo.directive';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { AnalyticsComponent } from './modules/analytics/analytics.component';
     MessagesComponent,
     UserComponent,
     ConfigComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    PromoDirective
   ],
   providers: [ ContentService, ComService ],
   bootstrap: [ AppComponent ]

@@ -1,6 +1,0 @@
-{
-	"main": "Calendar.js",
-	"styles": [
-		"Calendar.less"
-	]
-}

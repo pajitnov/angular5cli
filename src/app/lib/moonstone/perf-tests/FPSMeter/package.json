@@ -1,6 +1,0 @@
-{
-	"main": "FPSMeter.js",
-	"external": [
-		"fps.js"
-	]
-}

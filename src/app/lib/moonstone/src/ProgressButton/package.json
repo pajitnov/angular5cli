@@ -1,6 +1,0 @@
-{
-	"main": "ProgressButton.js",
-	"styles": [
-		"ProgressButton.less"
-	]
-}

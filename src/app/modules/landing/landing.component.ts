@@ -13,10 +13,10 @@ export class LandingComponent implements OnInit {
   constructor(private contentService: ContentService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getContent();
   }
 
-  getHeroes(): void {
+  getContent(): void {
     this.contentService.getAllContent()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }

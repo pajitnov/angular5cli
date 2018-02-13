@@ -7,6 +7,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Content } from '../modules/common/content/content';
 import { ComService } from './com.service';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,6 +19,8 @@ export class ContentService {
 
   private contentUrl = 'api/heroes';  // URL to web api
 
+//  private contentUrl = 'localhost:3030/movies';
+
   constructor(
     private http: HttpClient,
     private messageService: ComService) { }
@@ -24,11 +28,22 @@ export class ContentService {
   /** GET movies from the server */
   getAllContent (): Observable<Content[]> {
     return this.http.get<Content[]>(this.contentUrl)
+      .do( res => console.log('HTTP response:', res))
       .pipe(
         tap(heroes => this.log(`fetched movies`)),
         catchError(this.handleError('getAllContent', []))
       );
   }
+
+  /** GET movie by id. Will 404 if id not found */
+  getContent(id: number): Observable<Content> {
+    const url = `${this.contentUrl}/${id}`;
+    return this.http.get<Content>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Content>(`getHero id=${id}`))
+    );
+  }
+
 
   /** GET movie by id. Return `undefined` when id not found */
   getContentNo404<Data>(id: number): Observable<Content> {
@@ -44,24 +59,16 @@ export class ContentService {
       );
   }
 
-  /** GET movie by id. Will 404 if id not found */
-  getContent(id: number): Observable<Content> {
-    const url = `${this.contentUrl}/${id}`;
-    return this.http.get<Content>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Content>(`getHero id=${id}`))
-    );
-  }
 
   /* GET heroes whose name contains search term */
-  searchHeroes(term: string): Observable<Content[]> {
+  searchContent(term: string): Observable<Content[]> {
     if (!term.trim()) {
       // if not search term, return empty movies array.
       return of([]);
     }
     return this.http.get<Content[]>(`api/heroes/?name=${term}`).pipe(
       tap(_ => this.log(`found movies matching "${term}"`)),
-      catchError(this.handleError<Content[]>('searchHeroes', []))
+      catchError(this.handleError<Content[]>('searchContent', []))
     );
   }
 

@@ -10,14 +10,14 @@ import { ContentService } from '../../services/content.service';
 export class LandingComponent implements OnInit {
   heroes: Content[] = [];
 
-  constructor(private heroService: ContentService) { }
+  constructor(private contentService: ContentService) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService.getAllContent()
+    this.contentService.getAllContent()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 }

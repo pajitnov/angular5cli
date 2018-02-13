@@ -10,12 +10,15 @@ import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './landing/dashboard.component';
-import { HeroDetailComponent }  from './content-detail/hero-detail.component';
-import { HeroesComponent }      from './content/heroes.component';
-import { HeroSearchComponent }  from './content-search/hero-search.component';
+import { HeroDetailComponent }  from './content.detail/content.detail.component';
+import { HeroesComponent }      from './content/content.component';
+import { HeroSearchComponent }  from './content.search/content.search.component';
 import { HeroService }          from './hero.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
+import { UserComponent } from './user/user.component';
+import { ConfigComponent } from './config/config.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 @NgModule({
   imports: [
@@ -37,7 +40,10 @@ import { MessagesComponent }    from './messages/messages.component';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    UserComponent,
+    ConfigComponent,
+    AnalyticsComponent
   ],
   providers: [ HeroService, MessageService ],
   bootstrap: [ AppComponent ]

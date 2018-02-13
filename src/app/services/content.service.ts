@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Content } from '../modules/common/content/content';
+import { Content } from '../modules/content';
 import { ComService } from './com.service';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -30,7 +30,7 @@ export class ContentService {
     return this.http.get<Content[]>(this.contentUrl)
       .do( res => console.log('HTTP response:', res))
       .pipe(
-        tap(heroes => this.log(`fetched movies`)),
+        tap(content => this.log(`fetched movies`)),
         catchError(this.handleError('getAllContent', []))
       );
   }
@@ -39,7 +39,7 @@ export class ContentService {
   getContent(id: number): Observable<Content> {
     const url = `${this.contentUrl}/${id}`;
     return this.http.get<Content>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(_ => this.log(`fetched movie id=${id}`)),
       catchError(this.handleError<Content>(`getHero id=${id}`))
     );
   }
@@ -53,14 +53,14 @@ export class ContentService {
         map(heroes => heroes[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} hero id=${id}`);
+          this.log(`${outcome} movie id=${id}`);
         }),
         catchError(this.handleError<Content>(`getHero id=${id}`))
       );
   }
 
 
-  /* GET heroes whose name contains search term */
+  /* GET movies whose name contains search term */
   searchContent(term: string): Observable<Content[]> {
     if (!term.trim()) {
       // if not search term, return empty movies array.

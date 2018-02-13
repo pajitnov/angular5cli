@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Content }         from '../content/content';
-import { ContentService }  from '../../../services/content.service';
+import { Content }         from '../content';
+import { ContentService }  from '../../services/content.service';
 
 @Component({
   selector: 'app-content-detail',

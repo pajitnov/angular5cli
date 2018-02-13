@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Content } from '../common/content/content';
+import { Content } from '../content';
 import { ContentService } from '../../services/content.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ContentService } from '../../services/content.service';
   styleUrls: [ './views/landing.component.css' ]
 })
 export class LandingComponent implements OnInit {
-  heroes: Content[] = [];
+  movies: Content[] = [];
 
   constructor(private contentService: ContentService) { }
 
@@ -18,6 +18,6 @@ export class LandingComponent implements OnInit {
 
   getContent(): void {
     this.contentService.getAllContent()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+      .subscribe(content => this.movies = content.slice(1, 5));
   }
 }

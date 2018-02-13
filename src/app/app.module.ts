@@ -10,9 +10,7 @@ import { AppRoutingModule }     from './routes/routes.module';
 
 import { AppComponent }         from './app.component';
 import { LandingComponent }   from './modules/landing/landing.component';
-import { ContentDetail }  from './modules/common/content.detail/content.detail.component';
-import { ContentComponent }      from './modules/common/content/content.component';
-import { ContentSearchComponent }  from './modules/common/content.search/content.search.component';
+import { ContentDetail }  from './modules/content.detail/content.detail.component';
 import { ContentService }          from './services/content.service';
 import { ComService }       from './services/com.service';
 import { MessagesComponent }    from './modules/com/com.component';
@@ -37,10 +35,8 @@ import { AnalyticsComponent } from './modules/analytics/analytics.component';
   declarations: [
     AppComponent,
     LandingComponent,
-    ContentComponent,
     ContentDetail,
     MessagesComponent,
-    ContentSearchComponent,
     UserComponent,
     ConfigComponent,
     AnalyticsComponent

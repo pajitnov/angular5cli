@@ -1,8 +1,8 @@
 {
-  "name": "angular-io-example",
-  "version": "1.0.0",
+  "name": "e2-app",
+  "version": "0.0.1",
   "private": true,
-  "description": "Example project from an angular.io guide.",
+  "description": "Content delivery application.",
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod",

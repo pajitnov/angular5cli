@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MessageService } from './com.service';
+import { MessageService } from '../com.service';
 
 describe('MessageService', () => {
   beforeEach(() => {

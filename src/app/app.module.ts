@@ -10,12 +10,12 @@ import { AppRoutingModule }     from './routes/routes.module';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './modules/landing/landing.component';
-import { HeroDetailComponent }  from './modules/common/content.detail/content.detail.component';
+import { ContentDetail }  from './modules/common/content.detail/content.detail.component';
 import { HeroesComponent }      from './modules/common/content/content.component';
 import { HeroSearchComponent }  from './modules/common/content.search/content.search.component';
-import { HeroService }          from './services/content.service';
+import { ContentService }          from './services/content.service';
 import { MessageService }       from './services/com.service';
-import { MessagesComponent }    from './modules/messages/messages.component';
+import { MessagesComponent }    from './modules/com/com.component';
 import { UserComponent } from './modules/user/user.component';
 import { ConfigComponent } from './config/config.component';
 import { AnalyticsComponent } from './modules/analytics/analytics.component';
@@ -38,14 +38,14 @@ import { AnalyticsComponent } from './modules/analytics/analytics.component';
     AppComponent,
     DashboardComponent,
     HeroesComponent,
-    HeroDetailComponent,
+    ContentDetail,
     MessagesComponent,
     HeroSearchComponent,
     UserComponent,
     ConfigComponent,
     AnalyticsComponent
   ],
-  providers: [ HeroService, MessageService ],
+  providers: [ ContentService, MessageService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

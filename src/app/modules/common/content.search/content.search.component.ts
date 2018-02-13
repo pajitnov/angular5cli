@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
-import { of }         from 'rxjs/observable/of';
 
 import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
 import { Content } from '../content/content';
-import { HeroService } from '../../../services/content.service';
+import { ContentService } from '../../../services/content.service';
 
 @Component({
   selector: 'app-hero-search',
@@ -20,7 +19,7 @@ export class HeroSearchComponent implements OnInit {
   heroes$: Observable<Content[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: ContentService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {

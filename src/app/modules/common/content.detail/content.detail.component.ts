@@ -3,19 +3,19 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Content }         from '../content/content';
-import { HeroService }  from '../../../services/content.service';
+import { ContentService }  from '../../../services/content.service';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './views/content.detail.component.html',
   styleUrls: [ './views/content.detail.component.css' ]
 })
-export class HeroDetailComponent implements OnInit {
+export class ContentDetail implements OnInit {
   @Input() hero: Content;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: HeroService,
+    private heroService: ContentService,
     private location: Location
   ) {}
 
